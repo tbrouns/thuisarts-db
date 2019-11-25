@@ -62,7 +62,9 @@ if __name__ == "__main__":
         synonyms = tree.xpath('//div[@id="block-subjectsynonymsblock"]/div/ul/li')
         synonym_dict[result["title"]] = [s.text.strip() for s in synonyms]
 
-        summary_points = tree.xpath('//div[@class="subject-summary"]/div/ul/li')
+        summary_points = tree.xpath(
+            '//div[@class="subject-summary"]/div/ul/li/descendant-or-self::li'
+        )
         summary_dict[result["ID"]] = "\n".join(s.text or "" for s in summary_points)
 
         if args.throttle:
