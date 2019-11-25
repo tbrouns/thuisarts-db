@@ -63,7 +63,7 @@ if __name__ == "__main__":
         synonym_dict[result["title"]] = [s.text.strip() for s in synonyms]
 
         summary_points = tree.xpath(
-            '//div[@class="subject-summary"]/div/ul/li/descendant-or-self::li'
+            '//div[@class="subject-summary"]/div/ul/li/descendant-or-self::*'
         )
         summary_dict[result["ID"]] = "\n".join(s.text or "" for s in summary_points)
 
